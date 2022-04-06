@@ -4,7 +4,13 @@ import { schema } from '@ioc:Adonis/Core/Validator'
 
 export default class Sensor extends BaseModel {
   @column({ isPrimary: true })
-  public id: number
+  public sensorid: number
+
+  @column()
+  public sensor: string
+
+  @column()
+  public clave: string
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
@@ -14,6 +20,22 @@ export default class Sensor extends BaseModel {
 
   public static ver() {
     return this.query()
+  }
+
+  public static verUno(id) {
+    return this.findByOrFail('sensorid', id)
+  }
+
+  public static crear(data) {
+    return this.create(data)
+  }
+
+  public static schemasen() {
+    const postSchema = schema.create({
+      sensor: schema.string(),
+      clave: schema.string(),
+    })
+    return postSchema
   }
 
   public static schema() {
@@ -31,8 +53,13 @@ export default class Sensor extends BaseModel {
     return data.validate({ schema: this.schema() })
   }
 
+  public static validarsen(data) {
+    return data.validate({ schema: this.schema() })
+  }
+
   public static schema1() {
     const postSchema = schema.create({
+      id: schema.number(),
       fecha: schema.string(),
       hora: schema.string(),
       valor: schema.number(),
@@ -54,17 +81,6 @@ export default class Sensor extends BaseModel {
   public static modificar(data, registro) {
     return registro.merge(data).save()
   }
-
-  public static crearStock(quantity, product) {
-    product.stock = product.stock - quantity
-    return product
-  }
-
-  public static regresarStock(quantity, product) {
-    product.stock = product.stock + quantity
-    return product
-  }
-
 
 }
 

@@ -22,7 +22,7 @@ export default class Users extends BaseModel {
   public isActivated: boolean = true
 
   @column()
-  public rolid: number = 3
+  public rolid: number = 2
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime

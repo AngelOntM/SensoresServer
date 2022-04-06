@@ -23,6 +23,10 @@ import Route from '@ioc:Adonis/Core/Route'
 Route.group(() => {
   Route.resource('users', 'UsersController');
   Route.resource('sensores', 'SensoresController');
+  Route.resource('sensors', 'SensorsController');
+  Route.resource('invernaderos', 'InvernaderosController');
+  Route.resource('pines', 'PinesController');
+  Route.resource('secciones', 'SeccionsController');
   Route.put('data/:id', 'SensoresController.storedata')
 }).middleware('auth')
 

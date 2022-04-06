@@ -15,7 +15,7 @@ export default class UsersSchema extends BaseSchema {
         .unsigned()
         .references('roles.rolid')
         .onDelete('CASCADE')
-        .defaultTo('3')
+        .defaultTo('2')
       table.timestamps()
     })
   }
