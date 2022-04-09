@@ -9,9 +9,6 @@ export default class RoleSeeder extends BaseSeeder {
       },
       {
         rol: 'empleado',
-      },
-      {
-        rol: 'cliente',
       }
     ])
   }

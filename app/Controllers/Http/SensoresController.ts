@@ -2,7 +2,7 @@ import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Carrito from 'App/Models/Sensor';
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
-mongoose.connect('mongodb://52.55.151.205:27017/proyecto');
+mongoose.connect('mongodb://localhost:27017/proyecto');
 const carros = new Schema({
   id: Number,
   pines: Array,
@@ -33,7 +33,7 @@ export default class CarritosController {
   public async store({ request, response }: HttpContextContract) {
     const validatedData = await Carrito.validar(request)
     var dato = await new carrito({
-      id: 0,
+      id: await carrito.count(),
       pines: validatedData.pines,
       clave: validatedData.clave,
       isActive: validatedData.isActive,
