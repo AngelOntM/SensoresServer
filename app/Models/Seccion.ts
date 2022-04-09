@@ -3,7 +3,7 @@ import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
 import { schema, rules } from '@ioc:Adonis/Core/Validator'
 
 
-export default class Brand extends BaseModel {
+export default class Seccion extends BaseModel {
   @column({ isPrimary: true })
   public seccionid: number
 
