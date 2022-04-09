@@ -30,7 +30,7 @@ export default class Brand extends BaseModel {
 
   public static schema() {
     const postSchema = schema.create({
-      invernadero: schema.string({}, [rules.unique({ table: 'pines', column: 'pin' })])
+      pin: schema.string({}, [rules.unique({ table: 'pines', column: 'pin' })])
     })
     return postSchema
   }
