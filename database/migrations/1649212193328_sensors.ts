@@ -1,7 +1,7 @@
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
 
 export default class Sensores extends BaseSchema {
-  protected tableName = 'sensores'
+  protected tableName = 'sensors'
 
   public async up() {
     this.schema.createTable(this.tableName, (table) => {

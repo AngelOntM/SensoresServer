@@ -64,8 +64,7 @@ export default class Sensor extends BaseModel {
       hora: schema.string(),
       valor: schema.number(),
       medida: schema.string(),
-      nombre: schema.string(),
-      save: schema.boolean()
+      nombre: schema.string()
     })
     return postSchema
   }

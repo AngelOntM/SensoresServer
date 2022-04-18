@@ -79,9 +79,7 @@ export default class CarritosController {
   public async storedata({ response, request, params }: HttpContextContract) {
     const validatedData = await Carrito.validar1(request)
     const find = await carrito.findOne({ 'id': params.id })
-    const len = await carrito.findOne({ 'id': params.id }, { tam: { $size: '$data' }, '_id': false })
-    console.log(len)
-    await find.updateOne({ '$push': { data: { id: validatedData.id, fecha: validatedData.fecha, hora: validatedData.hora, valor: validatedData.valor, medida: validatedData.medida, nombre: validatedData.nombre, save: validatedData.save } } })
+    await find.updateOne({ '$push': { data: { id: validatedData.id, fecha: validatedData.fecha, hora: validatedData.hora, valor: validatedData.valor, medida: validatedData.medida, nombre: validatedData.nombre, save: true } } })
     await find.save()
     const find1 = await carrito.findOne({ 'id': params.id })
     return response.json({ find1 })
