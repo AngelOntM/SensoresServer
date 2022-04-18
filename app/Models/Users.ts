@@ -19,7 +19,7 @@ export default class Users extends BaseModel {
   public rememberMeToken?: string
 
   @column()
-  public isActivated: boolean = true
+  public is_activated: boolean = true
 
   @column()
   public rolid: number = 2
@@ -41,7 +41,7 @@ export default class Users extends BaseModel {
     const postSchema = schema.create({
       email: schema.string({}, [rules.email()]),
       password: schema.string(),
-      isActivated: schema.boolean(),
+      is_activated: schema.boolean(),
       rolid: schema.number()
     })
     return postSchema
@@ -56,7 +56,7 @@ export default class Users extends BaseModel {
   }
 
   public static desactivar(User) {
-    if (User.isActivated == false) {
+    if (User.is_activated == false) {
       Database.from('api_tokens').where('user_id', User).delete()
     }
   }
