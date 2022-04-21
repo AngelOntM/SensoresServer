@@ -54,7 +54,7 @@ export default class Sensor extends BaseModel {
   }
 
   public static validarsen(data) {
-    return data.validate({ schema: this.schema() })
+    return data.validate({ schema: this.schemasen() })
   }
 
   public static schema1() {
@@ -79,6 +79,28 @@ export default class Sensor extends BaseModel {
 
   public static modificar(data, registro) {
     return registro.merge(data).save()
+  }
+
+  public static nombre(nom) {
+    var n = 'Invalid'
+    switch (nom) {
+      case 'TH':
+        n = 'Temperatura y Humedad'
+        break;
+      case 'FR':
+        n = 'Fotoresistencia'
+        break;
+      case 'US':
+        n = 'Ultrasonico'
+        break;
+      case 'IR':
+        n = 'Infrarrojo'
+        break;
+      case 'HG':
+        n = 'Humo y Gas'
+        break;
+    }
+    return n
   }
 
 }
