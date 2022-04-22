@@ -3,6 +3,7 @@ import Carrito from 'App/Models/Sensor';
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 mongoose.connect('mongodb://52.55.151.205:27017/proyecto');
+//mongoose.connect('mongodb://127.0.0.1:27017/proyecto');
 const carros = new Schema({
   id: Number,
   pines: Array,
@@ -11,6 +12,7 @@ const carros = new Schema({
   isActive: Boolean,
   seccion: Number,
   invernadero: Number,
+  image: String,
   data: Array,
   created_at: Date,
   updated_at: Date,
@@ -33,15 +35,16 @@ export default class CarritosController {
 
   public async store({ request, response }: HttpContextContract) {
     const validatedData = await Carrito.validar(request)
-    var nom = await Carrito.nombre(validatedData.clave)
+    var vals = await Carrito.nombre(validatedData.clave)
     var dato = await new carrito({
       id: await carrito.count(),
       pines: validatedData.pines,
       clave: validatedData.clave,
-      nombre: nom,
+      nombre: vals.nom,
       isActive: validatedData.isActive,
       seccion: validatedData.seccion,
       invernadero: validatedData.invernadero,
+      image: vals.image,
       data: [],
       created_at: Date.now(),
       updated_at: Date.now(),
@@ -56,7 +59,6 @@ export default class CarritosController {
     var dato = await new carrito({
       id: params.id,
       pines: validatedData.pines,
-      clave: validatedData.clave,
       isActive: validatedData.isActive,
       seccion: validatedData.seccion,
       invernadero: validatedData.invernadero,
@@ -65,7 +67,7 @@ export default class CarritosController {
       store: true,
     });
     const find = await carrito.findOne({ 'id': params.id })
-    await find.update({ id: dato.id, pines: dato.pines, clave: dato.clave, isActive: dato.isActive, seccion: dato.seccion, invernadero: dato.invernadero, updated_at: dato.updated_at })
+    await find.update({ id: dato.id, pines: dato.pines, isActive: dato.isActive, seccion: dato.seccion, invernadero: dato.invernadero, updated_at: dato.updated_at })
     await find.save()
     return response.json({ find })
   }

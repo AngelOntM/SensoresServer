@@ -82,22 +82,22 @@ export default class Sensor extends BaseModel {
   }
 
   public static nombre(nom) {
-    var n = 'Invalid'
+    var n = { nom: 'Invalid', image: '' }
     switch (nom) {
       case 'TH':
-        n = 'Temperatura y Humedad'
+        n = { nom: 'Temperatura y Humedad', image: 'https://makertronix.com/uploads/productos/81-ESEN-DHT11.jpg' }
         break;
       case 'FR':
-        n = 'Fotoresistencia'
+        n = { nom: 'Fotoresistencia', image: 'https://makertronix.com/uploads/productos/92-ESEN-LDR.jpg' }
         break;
       case 'US':
-        n = 'Ultrasonico'
+        n = { nom: 'Ultrasonico', image: 'https://www.makercreativo.com/store/wp-content/uploads/2017/06/Sensor_ultrasonico_HCSR04_1.jpg' }
         break;
       case 'IR':
-        n = 'Infrarrojo'
+        n = { nom: 'Infrarrojo', image: 'https://ae01.alicdn.com/kf/H1dd5a68952a04cdc90b75ea051613f7fE/Sensor-infrarrojo-de-m-dulo-de-evitaci-n-de-obst-culos-IR-de-reflexi-n-para.jpg_Q90.jpg_.webp' }
         break;
       case 'HG':
-        n = 'Humo y Gas'
+        n = { nom: 'Humo y Gas', image: 'https://uelectronics.com/wp-content/uploads/AR0096-Sensor-de-Gas-v5.jpg' }
         break;
     }
     return n
